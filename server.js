@@ -2,6 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const { Server } = require("http");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -59,3 +60,4 @@ app.get("/api/market_data", (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+ping Server
