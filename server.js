@@ -48,7 +48,7 @@ setInterval(() => {
     const newPlayer = generatePlayer();
     market.push(newPlayer);
     saveMarket(market);
-    console.log("✅ Generated:", newPlayer.name);
+    console.log("✅ New player generated:", newPlayer.name);
 }, 60000);
 
 app.get("/api/market_data", (req, res) => {
@@ -57,5 +57,5 @@ app.get("/api/market_data", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
