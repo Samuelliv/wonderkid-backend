@@ -1,3 +1,4 @@
+
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
@@ -21,7 +22,6 @@ function saveMarket(data) {
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
 }
 
-// 简易名字生成器
 function generateRandomName() {
     const firstNames = ["Leo", "Kylian", "Erling", "Jude", "Pedri", "Florian"];
     const lastNames = ["Almeida", "Gonzalez", "Müller", "Santos", "Nguyen", "Okafor"];
@@ -43,21 +43,19 @@ function generatePlayer() {
     };
 }
 
-// 每分钟生成球员
 setInterval(() => {
     let market = loadMarket();
     const newPlayer = generatePlayer();
     market.push(newPlayer);
     saveMarket(market);
-    console.log("✅ New player generated:", newPlayer.name);
+    console.log("✅ Generated:", newPlayer.name);
 }, 60000);
 
-// API 读取市场球员数据
 app.get("/api/market_data", (req, res) => {
     const market = loadMarket();
     res.json(market);
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
