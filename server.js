@@ -3,7 +3,7 @@ const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -51,12 +51,10 @@ setInterval(() => {
     console.log("✅ New player generated:", newPlayer.name);
 }, 60000);
 
-app.get("/api/market_data", (req, res) => {
-    const market = loadMarket();
-    res.json(market);
+app.get('/', (req, res) => {
+  res.send('Wonderkid backend is live!');
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
-// ping for change
